@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NewsPulse - Trending Headlines Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js"></script>
+  
+  <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <meta name="theme-color" content="#362E6F"/>
+</head>
+<body>
+
+  <header class="navbar global-navbar">
+    <div class="logo">📰 NewsPulse</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#" id="nav-home">Home</a></li>
+        <li><a href="#" id="nav-login">Login</a></li>
+        <li><a href="#" id="nav-signup">Signup</a></li>
+        <li style="display:none"><a href="#" id="nav-dashboard">Dashboard</a></li>
+        <li style="display:none"><a href="#" id="nav-logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="section active">
+    <div class="hero">
+      <div class="hero-content">
+        <h1 class="animate-fade-in-down">Stay Ahead with <span>Trending Headlines</span></h1>
+        <p class="animate-fade-in-up delay-1">Discover, analyze, and visualize the world’s top news stories — all in one place.</p>
+        <button class="btn-start animate-fade-in-up delay-2" id="get-started-btn">Get Started</button>
+      </div>
+    </div>
+    
+    <section class="why-newspulse">
+      <div class="container">
+        <h2>Why NewsPulse?</h2>
+        <div class="features">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h4>📈 Trending Analysis</h4>
+            <p>Get quick insights into the most talked-about news topics.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-sliders"></i></div>
+            <h4>🎯 Personalized Feed</h4>
+            <p>Choose categories and sources you care about most.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-star"></i></div>
+            <h4>⭐ Favorites</h4>
+            <p>Bookmark headlines and keep track of stories that matter to you.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-chart-pie"></i></div>
+            <h4>📊 Visual Insights</h4>
+            <p>Charts, word clouds, and topic trends make news easy to digest.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works">
+      <div class="container">
+        <h2>How It Works</h2>
+        <p class="subtitle">Get insights in just three simple steps.</p>
+        <div class="steps">
+          <div class="step-card">
+            <span>1</span>
+            <h3>Sign Up Free</h3>
+            <p>Create your account in seconds to get started.</p>
+          </div>
+          <div class="step-card">
+            <span>2</span>
+            <h3>Customize Feed</h3>
+            <p>Select your favorite categories and topics.</p>
+          </div>
+          <div class="step-card">
+            <span>3</span>
+            <h3>Analyze Trends</h3>
+            <p>Explore charts, word clouds, and top headlines.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container">
+        <h2>What Our Users Say</h2>
+        <p class="subtitle">Thousands of users trust NewsPulse to stay informed.</p>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">
+              <i class="fa-solid fa-quote-left"></i>
+              <p>This is my go-to app every morning. The word cloud feature is surprisingly insightful for spotting new trends.</p>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?fit=crop&w=100&h=100&q=80" alt="User 1">
+              <div>
+                <h4>Alex Johnson</h4>
+                <span>Data Analyst</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-quote">
+              <i class="fa-solid fa-quote-left"></i>
+              <p>Finally, a news app that isn't just a wall of text. The visual charts help me understand source bias at a glance. Highly recommend!</p>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=100&h=100&q=80" alt="User 2">
+              <div>
+                <h4>Sarah Chen</h4>
+                <span>Marketing Manager</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-quote">
+              <i class="fa-solid fa-quote-left"></i>
+              <p>I love being able to save articles to my favorites and see my reading stats. It's the perfect blend of simple and powerful.</p>
+            </div>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?fit=crop&w=100&h=100&q=80" alt="User 3">
+              <div>
+                <h4>David Lee</h4>
+                <span>Student</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container small">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Is NewsPulse free to use?</summary>
+            <p>Yes, NewsPulse is completely free for all users. You can sign up, track headlines, save favorites, and use all analysis tools at no cost.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What data sources do you use?</summary>
+            <p>We use multiple data sources, including NewsAPI for global headlines and GNews for localized city-level news, ensuring you get a comprehensive view of the media landscape.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How is my data used?</summary>
+            <p>Your data, such as your email, name, and saved favorites, is stored securely. We only use your email to manage your account and send the (optional) daily digest. We never sell your data.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I use this on my mobile phone?</summary>
+            <p>Absolutely! The entire application, from the homepage to the dashboard, is fully responsive and designed to work beautifully on all devices, including mobile phones and tablets.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Dive In?</h2>
+        <p>Sign up today and start analyzing the news that matters to you.</p>
+        <button class="btn-start">Get Started Now</button>
+      </div>
+    </section>
+  </section>
+
+  <section id="login" class="section">
+    <div class="auth-container">
+      <div class="auth-box">
+        <h1>Welcome Back 👋</h1>
+        <p>Login to continue to <strong>NewsPulse</strong></p>
+        <form class="auth-form">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter your password" required />
+          </div>
+          <button type="submit" class="btn">Login</button>
+          <p class="switch-link">
+            Don’t have an account? <a href="#" id="to-signup">Sign Up</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="signup" class="section">
+    <div class="auth-container">
+      <div class="auth-box">
+        <h1>Create Account ✨</h1>
+        <p>Join <strong>NewsPulse</strong> to explore trending headlines</p>
+        <form class="auth-form">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Enter your name" required />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create a password" required />
+          </div>
+          <button type="submit" class="btn">Sign Up</button>
+          <p class="switch-link">
+            Already have an account? <a href="#" id="to-login">Login</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="onboarding" class="section">
+    <div class="auth-container">
+      <div class="auth-box">
+        <h1 id="onboard-welcome">Welcome!</h1>
+        <p>Select your favorite topics to build your personalized feed.</p>
+        
+        <div class="onboard-category-picker">
+          <button class="onboard-category-btn" data-category="general">
+            <i class="fa-solid fa-globe"></i> <span>General</span>
+          </button>
+          <button class="onboard-category-btn" data-category="business">
+            <i class="fa-solid fa-briefcase"></i> <span>Business</span>
+          </button>
+          <button class="onboard-category-btn" data-category="technology">
+            <i class="fa-solid fa-microchip"></i> <span>Technology</span>
+          </button>
+          <button class="onboard-category-btn" data-category="entertainment">
+            <i class="fa-solid fa-film"></i> <span>Entertainment</span>
+          </button>
+          <button class="onboard-category-btn" data-category="health">
+            <i class="fa-solid fa-heart-pulse"></i> <span>Health</span>
+          </button>
+          <button class="onboard-category-btn" data-category="science">
+            <i class="fa-solid fa-flask"></i> <span>Science</span>
+          </button>
+          <button class="onboard-category-btn" data-category="sports">
+            <i class="fa-solid fa-person-running"></i> <span>Sports</span>
+          </button>
+        </div>
+        
+        <button id="save-preferences-btn" class="btn">Save & Continue</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard" class="section">
+    <div class="dashboard-layout">
+
+      <aside class="dashboard-sidebar">
+         <div class="sidebar-logo">
+          NewsPulse
+        </div>
+        <nav class="sidebar-nav">
+          <a href="#" id="sidebar-headlines-btn" class="sidebar-link active">
+            <i class="fa-solid fa-newspaper"></i> <span>Headlines</span>
+          </a>
+          <a href="#" id="sidebar-favorites-btn" class="sidebar-link">
+            <i class="fa-solid fa-star"></i> <span>Favorites</span>
+          </a>
+          <a href="#" id="sidebar-profile-btn" class="sidebar-link">
+            <i class="fa-solid fa-user"></i> <span>Profile</span>
+          </a>
+        </nav>
+        <div class="sidebar-footer">
+          <a href="#" id="sidebar-logout-btn" class="sidebar-link logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Logout</span>
+          </a>
+        </div>
+      </aside>
+
+      <main class="dashboard-main-content">
+        <header class="dashboard-main-header">
+           <h2 id="dashboard-title">Headlines</h2>
+           <div id="current-time" class="current-time"></div>
+           <div class="header-search">
+            <input type="text" id="search-bar" placeholder="Search headlines...">
+            <button id="search-btn"><i class="fa-solid fa-search"></i></button>
+          </div>
+        </header>
+
+        <div id="headlines-view" class="dashboard-view active">
+          
+          <div class="categories">
+             <button class="category-btn active" data-category="foryou">
+               <i class="fa-solid fa-user-check"></i> <span>For You</span>
+             </button>
+             
+             <button class="category-btn" data-category="local">
+               <i class="fa-solid fa-location-dot"></i> <span>Local</span>
+             </button>
+             
+             <button class="category-btn" data-category="general">
+               <i class="fa-solid fa-globe"></i> <span>General</span>
+             </button>
+             <button class="category-btn" data-category="business">
+               <i class="fa-solid fa-briefcase"></i> <span>Business</span>
+             </button>
+             <button class="category-btn" data-category="technology">
+               <i class="fa-solid fa-microchip"></i> <span>Technology</span>
+             </button>
+             <button class="category-btn" data-category="entertainment">
+               <i class="fa-solid fa-film"></i> <span>Entertainment</span>
+             </button>
+             <button class="category-btn" data-category="health">
+               <i class="fa-solid fa-heart-pulse"></i> <span>Health</span>
+             </button>
+             <button class="category-btn" data-category="science">
+               <i class="fa-solid fa-flask"></i> <span>Science</span>
+             </button>
+             <button class="category-btn" data-category="sports">
+               <i class="fa-solid fa-person-running"></i> <span>Sports</span>
+             </button>
+          </div>
+
+          <div class="widget content-widget">
+            <div id="headlines-container" class="content-list">
+              </div>
+          </div>
+
+          <div class="dashboard-widgets-grid charts-grid">
+              <div class="widget chart-widget">
+                <h3>Source Statistics</h3>
+                <p>Analysis of currently loaded headlines</p>
+                <div class="chart-container">
+                  <canvas id="sourcePieChart"></canvas>
+                </div>
+              </div>
+
+              <div class="widget chart-widget">
+                <h3>Trending Words</h3>
+                <p>Most frequent words in current headlines</p>
+                <div class="wordcloud-container">
+                  <canvas id="wordCloudCanvas"></canvas>
+                  <div id="wordCloudAlt" aria-live="polite" class="sr-only"></div>
+                </div>
+              </div>
+          </div>
+
+        </div>
+
+        <div id="favorites-view" class="dashboard-view">
+           <div class="widget content-widget">
+            <div id="favorites-container" class="content-list simple-grid">
+              </div>
+          </div>
+        </div>
+
+        <div id="profile-view" class="dashboard-view">
+           <div class="dashboard-widgets-grid profile-grid">
+            
+            <div class="widget profile-card">
+              <button class="edit-profile-btn"><i class="fa-solid fa-pen"></i></button>
+              <div class="profile-avatar">
+                <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?fit=crop&w=200&h=200&q=80" alt="User Avatar">
+              </div>
+              <div class="profile-details">
+                <h3 id="profile-name">Your Name</h3>
+                <p><span id="profile-email">your.email@example.com</span></p>
+                <p class="profile-join-date"><strong>Joined:</strong> <span>Oct 28, 2025</span></p> 
+              </div>
+            </div>
+            
+            <div class="widget stats-card">
+              <h4>Your Stats</h4>
+              <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+                <span>Saved Favorites</span>
+                <strong id="stats-favorites">0</strong>
+              </div>
+              <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-book-open"></i></div>
+                <span>Articles Read</span>
+                <strong id="stats-read">0</strong>
+              </div>
+              <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-fire"></i></div>
+                <span>Top Category</span>
+                <strong id="stats-top-category">General</strong>
+              </div>
+               <div class="stat-item newsletter-toggle">
+                  <label for="newsletter-check">Daily Digest:</label>
+                  <input type="checkbox" id="newsletter-check" name="newsletter-check">
+              </div>
+              
+              <div class="stat-item push-toggle"> <label>Push Notifications:</label>
+                  <button id="enable-push-btn">Enable</button>
+              </div>
+              <div class="stat-item push-toggle">
+                  <label>Send a Test:</label>
+                  <button id="send-test-push-btn" disabled>Send</button>
+              </div>
+              </div>
+            
+          </div>
+        </div>
+        </main>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="footer-container">
+      <div class="footer-column about">
+        <div class="logo">📰 NewsPulse</div>
+        <p>Analyze the world's trending headlines, visualize news sources, and discover stories that matter to you. All in one place.</p>
+        <div class="social-links">
+          <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+      <div class="footer-column links">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Integrations</a></li>
+          <li><a href="#">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer-column links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div classs="footer-bottom">
+      <p>© 2025 NewsPulse. All rights reserved. Built for smarter news insights.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
